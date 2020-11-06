@@ -10,14 +10,6 @@ class AssetsController < ApplicationController
 
   def show
     @asset = Asset.find(params[:id])
-    if params[:buy_asset] == 'true'
-      if current_user.present?
-        VeryLongTask.perform_now(@asset, current_user)
-        redirect_to root_path, notice: 'Email is send to asset owner please check.'
-      else
-        redirect_to new_user_session_path, alert: 'you have to login first before buy any asset.'
-      end
-    end
   end
 
   def update

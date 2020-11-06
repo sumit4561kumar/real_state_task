@@ -14,10 +14,9 @@
         <img class="card-img-top" width="348" height="200" src="<%= asset.asset_image.present? ? asset.asset_image.thumb.url : '/uploads/no-thumbnail.jpg' %>" alt="">
         <div class="card-body">
             <div class="card-text mb-3">
-              <span class="mr-3"><strong>owner email: </strong> <%= asset.owner_email %></span><br/>
-              <span class="mr-3"><strong>address: </strong> <%= asset.address %></span><br/>
-              <span class="mr-3"><strong>asset type: </strong> <%= asset.asset_type %></span>
-              <span class="mr-3"><strong>price: </strong> $<%= asset.price %></span>
+              <span class="mr-3"><strong>Address: </strong> <%= asset.address %></span><br/>
+              <span class="mr-3"><strong>Asset type: </strong> <%= asset.asset_type.titleize %></span>
+              <span class="mr-3"><strong>Price: </strong> $<%= asset.price %></span>
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">

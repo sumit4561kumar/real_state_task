@@ -1,17 +1,21 @@
 <%= form_with model: @asset, local: true do |f| %>
     <div class="form-group">
+      <%= f.label :owner_email %>
       <%= f.email_field :owner_email, autofocus: true, autocomplete: "email", required: true, placeholder: 'Enter the Owner Email', class: 'form-control' %>
     </div>
   
     <div class="form-group">
+      <%= f.label :address %>
       <%= f.text_field :address, placeholder: 'Enter the address', required: true, class: 'form-control' %>
     </div>
   
     <div class="form-group">
+      <%= f.label :sqmt %>
       <%= f.number_field :sqmt, placeholder: 'Enter the sqmt', required: true, class: 'form-control' %>
     </div>
     
     <div class="form-group">
+      <%= f.label :price %>
       <%= f.number_field :price, placeholder: 'Enter the price', required: true, class: 'form-control' %>
     </div>
   
@@ -26,7 +30,7 @@
   
     <div class="form-group">
       <div class="form-check form-check-inline">
-        <%= f.radio_button :asset_type, 'house_asset', checked: f.object.asset_type=='house_asset', class: 'form-check-input asset-type' %>
+        <%= f.radio_button :asset_type, 'house_asset', checked: (f.object.asset_type =='house_asset' || f.object.asset_type.blank?), class: 'form-check-input asset-type' %>
         <label class="form-check-label" for="house_asset">
           House Asset
         </label>
@@ -46,7 +50,10 @@
     </div>
   
     <div class="form-group house_asset asset-type-group">
+      <%= f.label :rooms %>
       <%= f.number_field :rooms, placeholder: 'Enter the rooms', class: 'form-control' %><br/>
+      
+      <%= f.label :floors %>
       <%= f.number_field :floors, placeholder: 'Enter the floors', class: 'form-control' %><br/>
       <div class="form-check">
         <%= f.check_box :air_cond, { class:'form-check-input'}, 1, 0 %>
@@ -55,10 +62,14 @@
     </div>
   
     <div class="form-group complex_building d-none asset-type-group">
+      <%= f.label :units %>
       <%= f.number_field :units, placeholder: 'Enter the units', class: 'form-control', disabled: true %>
     </div>
     <div class="form-group commecial_unit d-none asset-type-group">
+      <%= f.label :shops %>
       <%= f.number_field :shops, placeholder: 'Enter the shops', class: 'form-control', disabled: true %><br/>
+      
+      <%= f.label :parking %>
       <%= f.number_field :parking, placeholder: 'Enter the parking', class: 'form-control', disabled: true %>
     </div>
   

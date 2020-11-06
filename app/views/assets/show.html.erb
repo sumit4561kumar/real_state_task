@@ -4,26 +4,25 @@
         <img class="card-img-top" height="400" src="<%= @asset.asset_image.present? ? @asset.asset_image.url : '/uploads/no-thumbnail.jpg' %>" alt="">
         <div class="card-body">
             <div class="card-text mb-3">
-              <span class="mr-3"><strong>owner email: </strong> <%= @asset.owner_email %></span><br/>
-              <span class="mr-3"><strong>address: </strong> <%= @asset.address %></span><br/>
-              <span class="mr-3"><strong>asset type: </strong> <%= @asset.asset_type %></span>
-              <span class="mr-3"><strong>price: </strong> $<%= @asset.price %></span>
-              <span class="mr-3"><strong>sqmt: </strong><%= @asset.sqmt %></span>
+              <span class="mr-3"><strong>Address: </strong> <%= @asset.address %></span><br/>
+              <span class="mr-3"><strong>Asset type: </strong> <%= @asset.asset_type.titleize %></span>
+              <span class="mr-3"><strong>Price: </strong> $<%= @asset.price %></span>
+              <span class="mr-3"><strong>Sqmt: </strong><%= @asset.sqmt %></span>
               <% if @asset.asset_type == 'house_asset' %>
-                <span class="mr-3"><strong>rooms: </strong><%= @asset.rooms %></span>
-                <span class="mr-3"><strong>floors: </strong><%= @asset.floors %></span>
-                <span class="mr-3"><strong>air_cond: </strong><%= @asset.air_cond %></span>
+                <span class="mr-3"><strong>Rooms: </strong><%= @asset.rooms %></span>
+                <span class="mr-3"><strong>Floors: </strong><%= @asset.floors %></span>
+                <span class="mr-3"><strong>Air conditioner: </strong><%= @asset.air_cond %></span>
               <% elsif @asset.asset_type == 'complex_building' %>
-              <span class="mr-3"><strong>units: </strong><%= @asset.units %></span>
+              <span class="mr-3"><strong>Units: </strong><%= @asset.units %></span>
               <% else %>
-                <span class="mr-3"><strong>shops: </strong><%= @asset.shops %></span>
-                <span class="mr-3"><strong>parking: </strong><%= @asset.parking %></span>
+                <span class="mr-3"><strong>Shops: </strong><%= @asset.shops %></span>
+                <span class="mr-3"><strong>Parking: </strong><%= @asset.parking %></span>
               <% end %>
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <%= link_to('back', root_path, class: "btn btn-sm btn-outline-secondary") %>  
-                <%= link_to('buy asset', asset_path(@asset.id,{:buy_asset => true}), class: "btn btn-sm btn-outline-secondary") %>
+                <%= link_to('Back', root_path, class: "btn btn-sm btn-outline-secondary") %>  
+                <%= link_to('Buy asset', asset_purchase_path(@asset.id), method: :post, class: "btn btn-sm btn-outline-secondary") %>
               </div>
             </div>
         </div>
