@@ -1,0 +1,45 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: 'Enter the Email', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :first_name, placeholder: 'Enter the first name', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :last_name, placeholder: 'Enter the last name', required: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :address, placeholder: 'Enter the address', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password, autocomplete: "new-password", required: true, class: 'form-control', placeholder: 'Enter password' %>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    </div>
+
+  <div class="form-group">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: 'form-control', placeholder: 'password confirmation' %>
+  </div>
+
+  <div class="form-group form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="managerChecked" name='user[manager_role]'>
+    <label class="form-check-label" for="managerChecked">
+      Sign up as Manager
+    </label>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
